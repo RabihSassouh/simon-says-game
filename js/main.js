@@ -41,10 +41,10 @@ function clickTile(color) {
 }
 
 function playLevel(newSequence) {
-  newSequence.forEach((color,index) => {
+  newSequence.forEach((color, index) => {
     setTimeout(() => {
       clickTile(color);
-    }, (index+1)*600);
+    }, (index + 1) * 600);
   });
 }
 function generateRandom() {
@@ -64,7 +64,7 @@ function nextLevel() {
   sequence = [...newSequence];
   setTimeout(() => {
     playerTurn(level);
-  }, level*600 + 1000);
+  }, level * 600 + 1000);
 }
 
 function playerTurn(level) {
