@@ -12,6 +12,7 @@ function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
   const remainingTaps = sequence.length - playerSequence.length;
   if (playerSequence[index] != sequence[index]) {
+
     resetGame("Ooops! Game over");
     return;
   }
@@ -66,6 +67,8 @@ function playerTurn(level) {
 
 function clickTile(color) {
   const tileColor = document.querySelector(`[data-tile='${color}']`);
+  const sound=new Audio(`../sounds/${color}.mp3`);
+  sound.play();
   tileColor.classList.remove("inactive");
   setTimeout(() => {
     tileColor.classList.add("inactive");
