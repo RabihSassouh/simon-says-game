@@ -10,7 +10,7 @@ function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
   const remainingTaps = sequence.length - playerSequence.length;
   if (playerSequence[index] != sequence[index]) {
-    resetGame('Ooops! Game over');
+    resetGame("Ooops! Game over");
     return;
   }
   if (playerSequence.length == sequence.length) {
@@ -75,10 +75,10 @@ function resetGame(text) {
   sequence = [];
   playerSequence = [];
   level = 0;
-  info.textContent=("Click play to start! Make it to 12 to win!");
-  board.classList.add('unclickable');
-  playBtn.classList.remove('hidden');
-  x=0  
+  info.textContent = "Click play to start! Make it to 12 to win!";
+  board.classList.add("unclickable");
+  playBtn.classList.remove("hidden");
+  x = 0;
 }
 
 playBtn.addEventListener("click", playGame);
