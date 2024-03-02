@@ -1,10 +1,13 @@
 let sequence = [];
 let playerSequence = [];
 const playBtn = document.getElementById("play");
+const info = document.getElementById("info");
+const board = document.querySelector(".board");
 let currentLevel = document.getElementById("level");
 let x = 0;
+
 function playGame() {
-  playBtn.textContent = "Wait for computer sequence!";
+  playBtn.classList.add("hidden");
   nextLevel();
 }
 
@@ -31,11 +34,24 @@ function generateRandom() {
 }
 
 function nextLevel() {
+  board.classList.add("unclickable");
+  info.textContent = "Memorize the computer sequence";
   x++;
   currentLevel.textContent = x;
   const newSequence = [...sequence];
   newSequence.push(generateRandom());
   playLevel(newSequence);
+  sequence = [...newSequence];
+  setTimeout(() => {
+    playerTurn(level);
+  }, level * 600 + 1000);
 }
+
+
+function playerTurn(level) {
+  board.classList.remove("unclickable");
+  info.textContent = `Your turn: ${level} tap${level > 1 ? "s" : ""}`;
+}
+
 
 playBtn.addEventListener("click", playGame);
