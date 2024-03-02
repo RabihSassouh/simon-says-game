@@ -4,9 +4,9 @@ const playBtn = document.getElementById("play");
 const info = document.getElementById("info");
 const board = document.querySelector(".board");
 let currentLevel = document.getElementById("level");
-let highScore= document.getElementById("high-score");
+let highScore = document.getElementById("high-score");
 let x = 0;
-let highScoreNum=0;
+let highScoreNum = 0;
 function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
   const remainingTaps = sequence.length - playerSequence.length;
@@ -60,9 +60,9 @@ function generateRandom() {
 function nextLevel() {
   x++;
   currentLevel.textContent = x;
-  if (x > highScoreNum){
-    highScoreNum=x;
-    highScore.textContent=highScoreNum;
+  if (x > highScoreNum) {
+    highScoreNum = x;
+    highScore.textContent = highScoreNum;
   }
   board.classList.add("unclickable");
   info.textContent = "Memorize the computer sequence";
