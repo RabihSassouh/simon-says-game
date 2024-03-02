@@ -12,7 +12,7 @@ function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
   const remainingTaps = sequence.length - playerSequence.length;
   if (playerSequence[index] != sequence[index]) {
-    const wrong= new Audio("../sounds/wrong.mp3");
+    const wrong = new Audio("../sounds/wrong.mp3");
     wrong.play();
     const gameOver = new Audio("../sounds/game-over.wav");
     gameOver.play();
@@ -104,10 +104,10 @@ board.addEventListener("click", function (event) {
   if (tile) {
     handleClick(tile);
     sound(tile);
-  }  
+  }
 });
 
-function sound(color){
+function sound(color) {
   const sound = new Audio(`../sounds/${color}.mp3`);
   sound.play();
 }
