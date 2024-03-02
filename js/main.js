@@ -9,8 +9,8 @@ function playGame() {
 }
 
 function clickTile(color) {
-  const tileColor = document.querySelector(`[data-tile='${color}']`);  
- 
+  const tileColor = document.querySelector(`[data-tile='${color}']`);
+
   tileColor.classList.remove("inactive");
   setTimeout(() => {
     tileColor.classList.add("inactive");
