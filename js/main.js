@@ -47,11 +47,9 @@ function nextLevel() {
   }, level * 600 + 1000);
 }
 
-
 function playerTurn(level) {
   board.classList.remove("unclickable");
   info.textContent = `Your turn: ${level} tap${level > 1 ? "s" : ""}`;
 }
-
 
 playBtn.addEventListener("click", playGame);
