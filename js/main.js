@@ -8,32 +8,34 @@ let x = 0;
 
 function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
-  // const sound = document.querySelector(`[data-sound='${tile}']`);
-  // sound.play();
-
   const remainingTaps = sequence.length - playerSequence.length;
-
-  if (playerSequence.length === sequence.length) {
+  if (playerSequence[index] != sequence[index]) {
+    resetGame('Ooops! Game over');
+    return;
+  }
+  if (playerSequence.length == sequence.length) {
     playerSequence = [];
     info.textContent = "Success! Keep going!";
     setTimeout(() => {
       nextLevel();
-    }, 1000);
+    }, 1500);
     return;
   }
-
-  info.textContent = `Your turn: ${remainingTaps} Tap${
-    remainingTaps > 1 ? "s" : ""
-  }`;
+  info.textContent = `Your turn: ${remainingTaps} Tap"s" left:`;
 }
+
 function playGame() {
   playBtn.classList.add("hidden");
   nextLevel();
 }
 
+function playerTurn(level) {
+  board.classList.remove("unclickable");
+  info.textContent = `Your turn: ${x} tap"s" left:`;
+}
+
 function clickTile(color) {
   const tileColor = document.querySelector(`[data-tile='${color}']`);
-
   tileColor.classList.remove("inactive");
   setTimeout(() => {
     tileColor.classList.add("inactive");
@@ -47,6 +49,7 @@ function playLevel(newSequence) {
     }, (index + 1) * 600);
   });
 }
+
 function generateRandom() {
   const tiles = ["green", "red", "blue", "yellow"];
   const random = tiles[Math.floor(Math.random() * tiles.length)];
@@ -67,9 +70,15 @@ function nextLevel() {
   }, level * 600 + 1000);
 }
 
-function playerTurn(level) {
-  board.classList.remove("unclickable");
-  info.textContent = `Your turn: ${level} tap${level > 1 ? "s" : ""}`;
+function resetGame(text) {
+  alert(text);
+  sequence = [];
+  playerSequence = [];
+  level = 0;
+  info.textContent=("Click play to start! Make it to 12 to win!");
+  board.classList.add('unclickable');
+  playBtn.classList.remove('hidden');
+  x=0  
 }
 
 playBtn.addEventListener("click", playGame);
