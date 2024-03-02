@@ -12,11 +12,17 @@ function handleClick(tile) {
   const index = playerSequence.push(tile) - 1;
   const remainingTaps = sequence.length - playerSequence.length;
   if (playerSequence[index] != sequence[index]) {
+    const wrong= new Audio("../sounds/wrong.mp3");
+    wrong.play();
+    const gameOver = new Audio("../sounds/game-over.wav");
+    gameOver.play();
     resetGame("Ooops! Game over");
     return;
   }
   if (playerSequence.length == sequence.length) {
     if (playerSequence.length == 12) {
+      const gameWin = new Audio("../sounds/game-win.wav");
+      gameWin.play();
       info.textContent = "Congrats! you have finished all 12 rounds...";
       return;
     }
@@ -66,8 +72,7 @@ function playerTurn(level) {
 
 function clickTile(color) {
   const tileColor = document.querySelector(`[data-tile='${color}']`);
-  const sound = new Audio(`../sounds/${color}.mp3`);
-  sound.play();
+  sound(color);
   tileColor.classList.remove("inactive");
   setTimeout(() => {
     tileColor.classList.add("inactive");
@@ -96,5 +101,15 @@ function resetGame(text) {
 playBtn.addEventListener("click", playGame);
 board.addEventListener("click", function (event) {
   const { tile } = event.target.dataset;
-  if (tile) handleClick(tile);
+  if (tile) {
+    handleClick(tile);
+    sound(tile);
+  }  
 });
+
+function sound(color){
+  const sound = new Audio(`../sounds/${color}.mp3`);
+  sound.play();
+}
+// const sound = new Audio("../sounds/game-over.wav");
+// sound.play();
