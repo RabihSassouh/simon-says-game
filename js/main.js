@@ -16,8 +16,8 @@ function handleClick(tile) {
     return;
   }
   if (playerSequence.length == sequence.length) {
-    if (playerSequence.length ==12){
-      info.textContent="Congrats! you have finished all 12 rounds...";
+    if (playerSequence.length == 12) {
+      info.textContent = "Congrats! you have finished all 12 rounds...";
       return;
     }
     playerSequence = [];
